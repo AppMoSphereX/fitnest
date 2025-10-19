@@ -1,5 +1,7 @@
 import 'package:fitnest/data/repositories/auth/auth_repository.dart';
 import 'package:fitnest/data/services/api/auth_service.dart';
+import 'package:fitnest/data/services/api/models/login_request/login_request.dart';
+import 'package:fitnest/data/services/api/models/login_response/login_response.dart';
 import 'package:fitnest/data/services/api/models/signup_request/signup_request.dart';
 import 'package:fitnest/data/services/api/models/signup_response/signup_response.dart';
 import 'package:fitnest/domain/models/user/user.dart';
@@ -36,6 +38,31 @@ class AuthRepositoryRemote extends AuthRepository {
         case Error<SignupResponse>():
           debugPrint(resultSignup.error.toString());
           return Result.error(resultSignup.error);
+      }
+    } on Exception {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<Result<void>> login({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final resultLogin = await _authService.signInWithEmailAndPassword(
+        LoginRequest(email: email, password: password),
+      );
+      switch (resultLogin) {
+        case Ok<LoginResponse>():
+          user = User(
+            email: resultLogin.value.email,
+            displayName: resultLogin.value.displayName,
+          );
+          return Result.ok(null);
+        case Error<LoginResponse>():
+          debugPrint(resultLogin.error.toString());
+          return Result.error(resultLogin.error);
       }
     } on Exception {
       rethrow;
