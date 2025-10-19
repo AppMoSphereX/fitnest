@@ -8,5 +8,7 @@ abstract class AuthRepository {
     required String password,
   });
 
+  Future<Result<void>> login({required String email, required String password});
+
   Future<Result<void>> logout();
 }

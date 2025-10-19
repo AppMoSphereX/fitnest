@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fitnest/data/services/api/models/login_request/login_request.dart';
+import 'package:fitnest/data/services/api/models/login_response/login_response.dart';
 import 'package:fitnest/data/services/api/models/signup_request/signup_request.dart';
 import 'package:fitnest/data/services/api/models/signup_response/signup_response.dart';
 import 'package:fitnest/utils/result.dart';
@@ -33,8 +35,8 @@ class AuthService {
     }
   }
 
-  Future<Result<SignupResponse>> signInWithEmailAndPassword(
-    SignUpRequest request,
+  Future<Result<LoginResponse>> signInWithEmailAndPassword(
+    LoginRequest request,
   ) async {
     try {
       final result = await _auth.signInWithEmailAndPassword(
@@ -44,7 +46,7 @@ class AuthService {
       if (result.user != null) {
         final user = result.user!;
         return Result.ok(
-          SignupResponse(
+          LoginResponse(
             displayName: user.displayName ?? '',
             email: user.email ?? '',
             refreshToken: user.refreshToken ?? '',
