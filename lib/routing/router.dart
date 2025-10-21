@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:fitnest/routing/auth_state_notifier.dart';
 import 'package:fitnest/routing/routes.dart';
+import 'package:fitnest/ui/home/home_screen_vm.dart';
 import 'package:fitnest/ui/auth/login/login_screen_vm.dart';
 import 'package:fitnest/ui/home/widgets/home_screen.dart';
 import 'package:fitnest/ui/auth/login/login_screen.dart';
@@ -30,7 +31,9 @@ final routerProvider = Provider<GoRouter>((ref) {
     routes: [
       GoRoute(
         path: Routes.home,
-        pageBuilder: (context, state) => MaterialPage(child: HomeScreen()),
+        pageBuilder: (context, state) => MaterialPage(
+          child: HomeScreen(ref.watch(homeScreenVMProvider.notifier)),
+        ),
       ),
       GoRoute(
         path: Routes.login,
