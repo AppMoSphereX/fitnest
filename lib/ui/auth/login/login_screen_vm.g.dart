@@ -41,7 +41,7 @@ final class LoginScreenVMProvider
   }
 }
 
-String _$loginScreenVMHash() => r'dba1aaab083d193982b33bbba5b1e521293ca0e8';
+String _$loginScreenVMHash() => r'7b554a725a513cf81b2c44055b5a7d54b26faade';
 
 abstract class _$LoginScreenVM extends $Notifier<LoginScreenState> {
   LoginScreenState build();

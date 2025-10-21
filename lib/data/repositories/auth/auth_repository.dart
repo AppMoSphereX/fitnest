@@ -2,6 +2,7 @@ import 'package:fitnest/utils/result.dart';
 
 abstract class AuthRepository {
   bool get isAuthenticated;
+  Stream<bool?> get authStateChanges;
 
   Future<Result<void>> signup({
     required String email,

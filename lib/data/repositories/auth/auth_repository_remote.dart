@@ -20,6 +20,10 @@ class AuthRepositoryRemote extends AuthRepository {
   bool get isAuthenticated => _authService.isAuthenticated;
 
   @override
+  Stream<bool?> get authStateChanges =>
+      _authService.authStateChanges.map((user) => user != null);
+
+  @override
   Future<Result<void>> signup({
     required String email,
     required String password,
