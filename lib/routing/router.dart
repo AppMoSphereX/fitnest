@@ -1,3 +1,5 @@
+import 'package:fitnest/ui/auth/signup/signup_screen.dart';
+import 'package:fitnest/ui/auth/signup/signup_screen_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,12 +20,14 @@ final routerProvider = Provider<GoRouter>((ref) {
     refreshListenable: authNotifier,
     redirect: (context, state) {
       final isAuthenticated = authNotifier.isAuthenticated ?? false;
-      final isOnLoginPage = state.matchedLocation == Routes.login;
+      final isOnAuthPage =
+          state.matchedLocation == Routes.login ||
+          state.matchedLocation == Routes.signup;
 
-      if (!isAuthenticated && !isOnLoginPage) {
+      if (!isAuthenticated && !isOnAuthPage) {
         return Routes.login;
       }
-      if (isAuthenticated && isOnLoginPage) {
+      if (isAuthenticated && isOnAuthPage) {
         return Routes.home;
       }
       return null;
@@ -39,6 +43,12 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: Routes.login,
         pageBuilder: (context, state) => MaterialPage(
           child: LoginScreen(ref.watch(loginScreenVMProvider.notifier)),
+        ),
+      ),
+      GoRoute(
+        path: Routes.signup,
+        pageBuilder: (context, state) => MaterialPage(
+          child: SignupScreen(ref.watch(signupScreenVMProvider.notifier)),
         ),
       ),
     ],

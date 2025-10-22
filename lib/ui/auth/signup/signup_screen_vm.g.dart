@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_screen_vm.dart';
+part of 'signup_screen_vm.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -9,52 +9,52 @@ part of 'login_screen_vm.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(LoginScreenVM)
-const loginScreenVMProvider = LoginScreenVMProvider._();
+@ProviderFor(SignupScreenVM)
+const signupScreenVMProvider = SignupScreenVMProvider._();
 
-final class LoginScreenVMProvider
-    extends $NotifierProvider<LoginScreenVM, LoginScreenState> {
-  const LoginScreenVMProvider._()
+final class SignupScreenVMProvider
+    extends $NotifierProvider<SignupScreenVM, SignupScreenState> {
+  const SignupScreenVMProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'loginScreenVMProvider',
+        name: r'signupScreenVMProvider',
         isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$loginScreenVMHash();
+  String debugGetCreateSourceHash() => _$signupScreenVMHash();
 
   @$internal
   @override
-  LoginScreenVM create() => LoginScreenVM();
+  SignupScreenVM create() => SignupScreenVM();
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(LoginScreenState value) {
+  Override overrideWithValue(SignupScreenState value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<LoginScreenState>(value),
+      providerOverride: $SyncValueProvider<SignupScreenState>(value),
     );
   }
 }
 
-String _$loginScreenVMHash() => r'ac16ff2f0d69bd6760ec725b32bf781958f78460';
+String _$signupScreenVMHash() => r'20fad3e53603032bcb9d6d738f284437f849d32e';
 
-abstract class _$LoginScreenVM extends $Notifier<LoginScreenState> {
-  LoginScreenState build();
+abstract class _$SignupScreenVM extends $Notifier<SignupScreenState> {
+  SignupScreenState build();
   @$mustCallSuper
   @override
   void runBuild() {
     final created = build();
-    final ref = this.ref as $Ref<LoginScreenState, LoginScreenState>;
+    final ref = this.ref as $Ref<SignupScreenState, SignupScreenState>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<LoginScreenState, LoginScreenState>,
-              LoginScreenState,
+              AnyNotifier<SignupScreenState, SignupScreenState>,
+              SignupScreenState,
               Object?,
               Object?
             >;

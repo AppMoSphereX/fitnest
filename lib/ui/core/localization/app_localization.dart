@@ -14,8 +14,16 @@ class AppLocalization {
     'register': 'Register',
     'forgotPassword': 'Forgot your password?',
     'dontHaveAccount': 'Don\'t have an account yet?',
+    'alreadyHaveAccount': 'Already have an account?',
     'haveAccount': 'Have an account?',
     'welcomeBack': 'Welcome Back',
+    'hetThere': 'Hey There!',
+    'createAnAccount': 'Create an Account',
+    'firstName': 'First Name',
+    'lastName': 'Last Name',
+    'confirmPassword': 'Confirm Password',
+    'termsAndConditions':
+        'By continuing you accept our Privacy Policy and Term of Use',
   };
 
   static String _get(String label) =>
@@ -28,8 +36,15 @@ class AppLocalization {
   String get register => _get('register');
   String get forgotPassword => _get('forgotPassword');
   String get dontHaveAccount => _get('dontHaveAccount');
+  String get alreadyHaveAccount => _get('alreadyHaveAccount');
   String get haveAccount => _get('haveAccount');
   String get welcomeBack => _get('welcomeBack');
+  String get hetThere => _get('hetThere');
+  String get createAnAccount => _get('createAnAccount');
+  String get firstName => _get('firstName');
+  String get lastName => _get('lastName');
+  String get confirmPassword => _get('confirmPassword');
+  String get termsAndConditions => _get('termsAndConditions');
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
