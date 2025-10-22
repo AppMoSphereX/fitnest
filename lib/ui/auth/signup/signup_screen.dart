@@ -1,7 +1,7 @@
 import 'dart:ui' as ui;
 
 import 'package:fitnest/routing/routes.dart';
-import 'package:fitnest/ui/auth/login/login_screen_vm.dart';
+import 'package:fitnest/ui/auth/signup/signup_screen_vm.dart';
 import 'package:fitnest/ui/core/localization/app_localization.dart';
 import 'package:fitnest/ui/core/widgets/app_form_field.dart';
 import 'package:fitnest/utils/validators.dart';
@@ -9,22 +9,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginScreen extends ConsumerStatefulWidget {
-  const LoginScreen(this.viewModel, {super.key});
+class SignupScreen extends ConsumerStatefulWidget {
+  const SignupScreen(this.viewModel, {super.key});
 
-  final LoginScreenVM viewModel;
+  final SignupScreenVM viewModel;
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _LoginScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends ConsumerState<LoginScreen> {
+class _SignupScreenState extends ConsumerState<SignupScreen> {
+  late final TextEditingController _firstNameController;
+  late final TextEditingController _lastNameController;
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
   late final GlobalKey<FormState> _formKey;
 
   @override
   void initState() {
+    _firstNameController = TextEditingController();
+    _lastNameController = TextEditingController();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
     _formKey = GlobalKey<FormState>();
@@ -33,7 +37,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(loginScreenVMProvider);
+    final state = ref.watch(signupScreenVMProvider);
     final appLocalization = AppLocalization.of(context);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -52,7 +56,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ),
               SizedBox(height: 5),
               Text(
-                appLocalization.welcomeBack,
+                appLocalization.createAnAccount,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -65,6 +69,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 child: Column(
                   children: [
                     AppFormField(
+                      controller: _firstNameController,
+                      label: appLocalization.firstName,
+                      prefixIcon: Icons.person_outline_rounded,
+                    ),
+                    SizedBox(height: 15),
+                    AppFormField(
+                      controller: _lastNameController,
+                      label: appLocalization.lastName,
+                      prefixIcon: Icons.person_outline_rounded,
+                    ),
+                    SizedBox(height: 15),
+                    AppFormField(
                       controller: _emailController,
                       validator: Validators.validateEmail,
                       label: appLocalization.email,
@@ -75,24 +91,42 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       controller: _passwordController,
                       label: appLocalization.password,
                       prefixIcon: Icons.lock_outline_rounded,
-                      validator: Validators.validatePasswordLogin,
+                      validator: Validators.validatePasswordSignup,
                       obscureText: true,
                     ),
                   ],
                 ),
               ),
               SizedBox(height: 10),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  appLocalization.forgotPassword,
-                  style: TextStyle(
-                    fontSize: 12,
-                    height: 1.5,
-                    color: Color.fromARGB(255, 173, 164, 165),
-                    decoration: TextDecoration.underline,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Checkbox(
+                    value: state.isTermsAccepted,
+                    fillColor: WidgetStateProperty.resolveWith((states) {
+                      if (states.contains(WidgetState.disabled)) {
+                        return Color.fromARGB(255, 173, 164, 165);
+                      }
+                      if (states.contains(WidgetState.selected)) {
+                        return Color(0xFF92A3FD);
+                      }
+                      return Colors.transparent;
+                    }),
+                    onChanged: (value) {
+                      widget.viewModel.setTermsAccepted(value ?? false);
+                    },
                   ),
-                ),
+                  Expanded(
+                    child: Text(
+                      appLocalization.termsAndConditions,
+                      style: TextStyle(
+                        fontSize: 12,
+                        height: 1.5,
+                        color: Color.fromARGB(255, 173, 164, 165),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -110,23 +144,29 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     child: SizedBox(
                       height: 60,
                       child: ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            widget.viewModel.login(
-                              _emailController.text,
-                              _passwordController.text,
-                            );
-                          }
-                        },
+                        onPressed: state.isTermsAccepted
+                            ? () {
+                                if (_formKey.currentState!.validate()) {
+                                  widget.viewModel.signup(
+                                    _emailController.text,
+                                    _passwordController.text,
+                                    '',
+                                    '',
+                                  );
+                                }
+                              }
+                            : null,
                         style: ButtonStyle(
                           backgroundBuilder: (context, states, child) {
                             return Container(
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
-                                  colors: [
-                                    Color(0xFF92A3FD),
-                                    Color(0xFF9DCEFF),
-                                  ],
+                                  colors: !state.isTermsAccepted
+                                      ? [
+                                          Color.fromARGB(255, 173, 164, 165),
+                                          Color.fromARGB(255, 173, 164, 165),
+                                        ]
+                                      : [Color(0xFF92A3FD), Color(0xFF9DCEFF)],
                                 ),
                               ),
                               child: child,
@@ -136,7 +176,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         child: state.isLoading
                             ? CircularProgressIndicator()
                             : Text(
-                                appLocalization.login,
+                                appLocalization.register,
                                 style: TextStyle(
                                   fontSize: 16,
                                   height: 1.5,
@@ -154,7 +194,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    appLocalization.dontHaveAccount,
+                    appLocalization.alreadyHaveAccount,
                     style: TextStyle(
                       fontSize: 14,
                       height: 1.5,
@@ -164,10 +204,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   ),
                   TextButton(
                     onPressed: () {
-                      context.go(Routes.signup);
+                      context.pushReplacement(Routes.login);
                     },
                     child: Text(
-                      appLocalization.register,
+                      appLocalization.login,
                       style: TextStyle(
                         fontSize: 14,
                         height: 1.5,
