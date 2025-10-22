@@ -81,19 +81,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 10),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  appLocalization.forgotPassword,
-                  style: TextStyle(
-                    fontSize: 12,
-                    height: 1.5,
-                    color: Color.fromARGB(255, 173, 164, 165),
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
             ],
           ),
         ),

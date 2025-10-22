@@ -12,7 +12,6 @@ class AppLocalization {
     'password': 'Password',
     'login': 'Login',
     'register': 'Register',
-    'forgotPassword': 'Forgot your password?',
     'dontHaveAccount': 'Don\'t have an account yet?',
     'alreadyHaveAccount': 'Already have an account?',
     'haveAccount': 'Have an account?',
