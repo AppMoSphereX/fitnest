@@ -1,5 +1,4 @@
-import 'dart:ui' as ui;
-
+import 'package:fitnest/config/theme/theme_extensions.dart';
 import 'package:fitnest/routing/routes.dart';
 import 'package:fitnest/ui/auth/signup/signup_screen_vm.dart';
 import 'package:fitnest/ui/core/localization/app_localization.dart';
@@ -39,8 +38,10 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(signupScreenVMProvider);
     final appLocalization = AppLocalization.of(context);
+    final palette = context.palette;
+    final typography = context.typography;
+
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 30, right: 30.0, top: 60),
@@ -48,20 +49,14 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
             children: [
               Text(
                 appLocalization.hetThere,
-                style: TextStyle(
-                  fontSize: 16,
+                style: typography.largeText.copyWith(
                   fontWeight: FontWeight.w400,
-                  height: 1.5,
                 ),
               ),
               SizedBox(height: 5),
               Text(
                 appLocalization.createAnAccount,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  height: 1.5,
-                ),
+                style: typography.h4.copyWith(fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 30),
               Form(
@@ -103,15 +98,6 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                 children: [
                   Checkbox(
                     value: state.isTermsAccepted,
-                    fillColor: WidgetStateProperty.resolveWith((states) {
-                      if (states.contains(WidgetState.disabled)) {
-                        return Color.fromARGB(255, 173, 164, 165);
-                      }
-                      if (states.contains(WidgetState.selected)) {
-                        return Color(0xFF92A3FD);
-                      }
-                      return Colors.transparent;
-                    }),
                     onChanged: (value) {
                       widget.viewModel.setTermsAccepted(value ?? false);
                     },
@@ -119,10 +105,8 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                   Expanded(
                     child: Text(
                       appLocalization.termsAndConditions,
-                      style: TextStyle(
-                        fontSize: 12,
-                        height: 1.5,
-                        color: Color.fromARGB(255, 173, 164, 165),
+                      style: typography.smallText.copyWith(
+                        color: palette.disabledColor,
                       ),
                     ),
                   ),
@@ -156,34 +140,9 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                                 }
                               }
                             : null,
-                        style: ButtonStyle(
-                          backgroundBuilder: (context, states, child) {
-                            return Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: !state.isTermsAccepted
-                                      ? [
-                                          Color.fromARGB(255, 173, 164, 165),
-                                          Color.fromARGB(255, 173, 164, 165),
-                                        ]
-                                      : [Color(0xFF92A3FD), Color(0xFF9DCEFF)],
-                                ),
-                              ),
-                              child: child,
-                            );
-                          },
-                        ),
                         child: state.isLoading
-                            ? CircularProgressIndicator()
-                            : Text(
-                                appLocalization.register,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  height: 1.5,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
+                            ? CircularProgressIndicator(color: Colors.white)
+                            : Text(appLocalization.register),
                       ),
                     ),
                   ),
@@ -195,12 +154,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                 children: [
                   Text(
                     appLocalization.alreadyHaveAccount,
-                    style: TextStyle(
-                      fontSize: 14,
-                      height: 1.5,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
+                    style: typography.mediumText,
                   ),
                   TextButton(
                     onPressed: () {
@@ -208,15 +162,10 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                     },
                     child: Text(
                       appLocalization.login,
-                      style: TextStyle(
-                        fontSize: 14,
-                        height: 1.5,
-                        fontWeight: FontWeight.w500,
+                      style: typography.mediumText.copyWith(
                         foreground: Paint()
-                          ..shader = ui.Gradient.linear(
-                            const Offset(0, 20),
-                            const Offset(150, 20),
-                            <Color>[Color(0xFFC58BF2), Color(0xFFEEA4CE)],
+                          ..shader = palette.secondaryGradient.createShader(
+                            Rect.fromLTWH(0, 0, 150, 20),
                           ),
                       ),
                     ),

@@ -1,3 +1,4 @@
+import 'package:fitnest/config/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
 
 class AppFormField extends StatelessWidget {
@@ -26,29 +27,11 @@ class AppFormField extends StatelessWidget {
       controller: _controller,
       validator: _validator,
       obscureText: _obscureText,
+      style: context.typography.smallText,
       autovalidateMode: AutovalidateMode.onUnfocus,
       decoration: InputDecoration(
-        filled: true,
-        contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(14.0)),
-          borderSide: BorderSide.none,
-        ),
-        label: _label != null
-            ? Text(
-                _label,
-                style: TextStyle(
-                  fontSize: 12,
-                  height: 1.5,
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xFFADA4A5),
-                ),
-              )
-            : null,
-        floatingLabelBehavior: FloatingLabelBehavior.never,
+        label: _label != null ? Text(_label) : null,
         prefixIcon: Icon(_prefixIcon),
-        fillColor: Color.fromARGB(255, 247, 248, 248),
-        iconColor: Color.fromARGB(255, 123, 111, 114),
       ),
     );
   }

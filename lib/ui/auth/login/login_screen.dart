@@ -1,5 +1,4 @@
-import 'dart:ui' as ui;
-
+import 'package:fitnest/config/theme/theme_extensions.dart';
 import 'package:fitnest/routing/routes.dart';
 import 'package:fitnest/ui/auth/login/login_screen_vm.dart';
 import 'package:fitnest/ui/core/localization/app_localization.dart';
@@ -35,8 +34,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(loginScreenVMProvider);
     final appLocalization = AppLocalization.of(context);
+    final palette = context.palette;
+    final typography = context.typography;
+
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 30, right: 30.0, top: 60),
@@ -44,20 +45,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             children: [
               Text(
                 appLocalization.hetThere,
-                style: TextStyle(
-                  fontSize: 16,
+                style: typography.largeText.copyWith(
                   fontWeight: FontWeight.w400,
-                  height: 1.5,
                 ),
               ),
               SizedBox(height: 5),
               Text(
                 appLocalization.welcomeBack,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  height: 1.5,
-                ),
+                style: typography.h4.copyWith(fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 30),
               Form(
@@ -105,32 +100,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             );
                           }
                         },
-                        style: ButtonStyle(
-                          backgroundBuilder: (context, states, child) {
-                            return Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Color(0xFF92A3FD),
-                                    Color(0xFF9DCEFF),
-                                  ],
-                                ),
-                              ),
-                              child: child,
-                            );
-                          },
-                        ),
                         child: state.isLoading
-                            ? CircularProgressIndicator()
-                            : Text(
-                                appLocalization.login,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  height: 1.5,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
+                            ? CircularProgressIndicator(color: Colors.white)
+                            : Text(appLocalization.login),
                       ),
                     ),
                   ),
@@ -142,12 +114,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 children: [
                   Text(
                     appLocalization.dontHaveAccount,
-                    style: TextStyle(
-                      fontSize: 14,
-                      height: 1.5,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
+                    style: typography.mediumText,
                   ),
                   TextButton(
                     onPressed: () {
@@ -155,15 +122,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     },
                     child: Text(
                       appLocalization.register,
-                      style: TextStyle(
-                        fontSize: 14,
-                        height: 1.5,
-                        fontWeight: FontWeight.w500,
+                      style: typography.mediumText.copyWith(
                         foreground: Paint()
-                          ..shader = ui.Gradient.linear(
-                            const Offset(0, 20),
-                            const Offset(150, 20),
-                            <Color>[Color(0xFFC58BF2), Color(0xFFEEA4CE)],
+                          ..shader = palette.secondaryGradient.createShader(
+                            Rect.fromLTWH(0, 0, 150, 20),
                           ),
                       ),
                     ),
