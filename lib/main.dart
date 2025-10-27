@@ -1,3 +1,5 @@
+import 'package:fitnest/config/theme/app_theme.dart';
+import 'package:fitnest/config/theme/theme_provider.dart';
 import 'package:fitnest/routing/router.dart';
 import 'package:fitnest/ui/core/localization/app_localization.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +19,7 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode = ref.watch(appThemeProvider);
     return MaterialApp.router(
       routerConfig: ref.watch(routerProvider),
       localizationsDelegates: [
@@ -25,9 +28,9 @@ class MyApp extends ConsumerWidget {
         AppLocalizationDelegate(),
       ],
       title: 'Fitnest',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      themeMode: themeMode,
     );
   }
 }
