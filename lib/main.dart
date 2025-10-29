@@ -20,6 +20,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(appThemeProvider);
+
     return MaterialApp.router(
       routerConfig: ref.watch(routerProvider),
       localizationsDelegates: [

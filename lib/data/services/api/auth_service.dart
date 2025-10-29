@@ -10,6 +10,8 @@ class AuthService {
 
   bool get isAuthenticated => _auth.currentUser != null;
 
+  String? get currentUserId => _auth.currentUser?.uid;
+
   Stream<User?> get authStateChanges => _auth.authStateChanges();
 
   Future<Result<SignupResponse>> signupWithEmailAndPassword(
