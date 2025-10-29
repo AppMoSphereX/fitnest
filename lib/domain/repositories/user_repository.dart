@@ -6,5 +6,3 @@ abstract class UserRepository {
   Future<Result<void>> createUserProfile(String userId, User user);
   Future<Result<void>> updateUserProfile(String userId, User user);
 }
-
-

@@ -134,8 +134,8 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                                   widget.viewModel.signup(
                                     _emailController.text,
                                     _passwordController.text,
-                                    '',
-                                    '',
+                                    _firstNameController.text,
+                                    _lastNameController.text,
                                   );
                                 }
                               }

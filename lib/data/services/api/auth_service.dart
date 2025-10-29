@@ -26,9 +26,7 @@ class AuthService {
         final user = result.user!;
         return Result.ok(
           SignupResponse(
-            displayName: user.displayName ?? '',
-            email: user.email ?? '',
-            refreshToken: user.refreshToken ?? '',
+            userId: user.uid,
           ),
         );
       } else {

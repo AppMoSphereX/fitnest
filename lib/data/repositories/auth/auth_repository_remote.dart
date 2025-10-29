@@ -23,7 +23,7 @@ class AuthRepositoryRemote extends AuthRepository {
       _authService.authStateChanges.map((user) => user != null);
 
   @override
-  Future<Result<void>> signup({
+  Future<Result<String>> signup({
     required String email,
     required String password,
   }) async {
@@ -33,7 +33,7 @@ class AuthRepositoryRemote extends AuthRepository {
       );
       switch (resultSignup) {
         case Ok<SignupResponse>():
-          return Result.ok(null);
+          return Result.ok(resultSignup.value.userId);
         case Error<SignupResponse>():
           debugPrint(resultSignup.error.toString());
           return Result.error(resultSignup.error);
