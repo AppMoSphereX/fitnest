@@ -31,7 +31,8 @@ class AppFormField extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUnfocus,
       decoration: InputDecoration(
         label: _label != null ? Text(_label) : null,
-        prefixIcon: Icon(_prefixIcon),
+        prefixIcon: Icon(_prefixIcon, size: 20),
+        prefixIconColor: context.palette.inputIconColor,
       ),
     );
   }

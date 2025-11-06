@@ -23,6 +23,22 @@ class AppLocalization {
     'confirmPassword': 'Confirm Password',
     'termsAndConditions':
         'By continuing you accept our Privacy Policy and Term of Use',
+    'letsCompleteYourProfile': "Let's complete your profile",
+    'itWillHelpUsToKnowMoreAboutYou': 'It will help us to know more about you!',
+    'weight': 'Weight',
+    'height': 'Height',
+    'kg': 'KG',
+    'cm': 'CM',
+    'gender': 'Gender',
+    'dateOfBirth': 'Date of Birth',
+    'male': 'Male',
+    'female': 'Female',
+    'selectGender': 'Select Gender',
+    'genderIsRequired': 'Gender is required',
+    'dateOfBirthIsRequired': 'Date of Birth is required',
+    'weightIsRequired': 'Weight is required',
+    'heightIsRequired': 'Height is required',
+    'next': 'Next',
   };
 
   static String _get(String label) =>
@@ -44,6 +60,23 @@ class AppLocalization {
   String get lastName => _get('lastName');
   String get confirmPassword => _get('confirmPassword');
   String get termsAndConditions => _get('termsAndConditions');
+  String get letsCompleteYourProfile => _get('letsCompleteYourProfile');
+  String get itWillHelpUsToKnowMoreAboutYou =>
+      _get('itWillHelpUsToKnowMoreAboutYou');
+  String get weight => _get('weight');
+  String get height => _get('height');
+  String get kg => _get('kg');
+  String get cm => _get('cm');
+  String get gender => _get('gender');
+  String get dateOfBirth => _get('dateOfBirth');
+  String get male => _get('male');
+  String get female => _get('female');
+  String get selectGender => _get('selectGender');
+  String get genderIsRequired => _get('genderIsRequired');
+  String get dateOfBirthIsRequired => _get('dateOfBirthIsRequired');
+  String get weightIsRequired => _get('weightIsRequired');
+  String get heightIsRequired => _get('heightIsRequired');
+  String get next => _get('next');
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
