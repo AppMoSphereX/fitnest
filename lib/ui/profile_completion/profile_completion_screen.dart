@@ -2,6 +2,7 @@ import 'package:fitnest/config/theme/app_palette.dart';
 import 'package:fitnest/config/theme/theme_extensions.dart';
 import 'package:fitnest/config/theme/typography.dart';
 import 'package:fitnest/ui/core/localization/app_localization.dart';
+import 'package:fitnest/ui/core/localization/localization_extensions.dart';
 import 'package:fitnest/ui/core/widgets/app_dropdown.dart';
 import 'package:fitnest/ui/core/widgets/app_form_field.dart';
 import 'package:fitnest/ui/profile_completion/profile_completion_state.dart';
@@ -19,7 +20,7 @@ class ProfileCompletionScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(profileCompletionVMProvider);
-    final appLocalization = AppLocalization.of(context);
+    final appLocalization = context.localization;
     final typography = context.typography;
     final palette = context.palette;
 
