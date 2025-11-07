@@ -39,6 +39,7 @@ class AppLocalization {
     'weightIsRequired': 'Weight is required',
     'heightIsRequired': 'Height is required',
     'next': 'Next',
+    'confirm': 'Confirm',
   };
 
   static String _get(String label) =>
@@ -77,6 +78,7 @@ class AppLocalization {
   String get weightIsRequired => _get('weightIsRequired');
   String get heightIsRequired => _get('heightIsRequired');
   String get next => _get('next');
+  String get confirm => _get('confirm');
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {

@@ -25,4 +25,16 @@ class ProfileCompletionVM extends _$ProfileCompletionVM {
   void setHeight(double height) {
     state = state.copyWith(height: height);
   }
+
+  void nextStep() {
+    if (state.step < 2) {
+      state = state.copyWith(step: state.step + 1);
+    }
+  }
+
+  void previousStep() {
+    if (state.step > 1) {
+      state = state.copyWith(step: state.step - 1);
+    }
+  }
 }

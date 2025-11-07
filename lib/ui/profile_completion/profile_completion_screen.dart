@@ -5,6 +5,7 @@ import 'package:fitnest/ui/core/localization/app_localization.dart';
 import 'package:fitnest/ui/core/localization/localization_extensions.dart';
 import 'package:fitnest/ui/core/widgets/app_dropdown.dart';
 import 'package:fitnest/ui/core/widgets/app_form_field.dart';
+import 'package:fitnest/ui/core/widgets/expanded_button.dart';
 import 'package:fitnest/ui/profile_completion/profile_completion_state.dart';
 import 'package:fitnest/ui/profile_completion/profile_completion_vm.dart';
 import 'package:fitnest/utils/validators.dart';
@@ -28,40 +29,66 @@ class ProfileCompletionScreen extends ConsumerWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(30.0),
-          child: Column(
-            children: [
-              Image.asset('assets/images/profile_completion.png'),
-              const SizedBox(height: 30),
-              Text(
-                appLocalization.letsCompleteYourProfile,
-                style: typography.h4.copyWith(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 5),
-              Text(
-                appLocalization.itWillHelpUsToKnowMoreAboutYou,
-                style: typography.smallText,
-              ),
-              const SizedBox(height: 30),
-              _buildGenderInput(appLocalization, typography),
-              const SizedBox(height: 15),
-              _buildBirthDateInput(
-                context: context,
-                state: state,
-                typography: typography,
-                appLocalization: appLocalization,
-                palette: palette,
-              ),
-              const SizedBox(height: 15),
-              _buildWeightInput(appLocalization, palette, typography),
-              const SizedBox(height: 15),
-              _buildHeightInput(appLocalization, palette, typography),
-            ],
-          ),
+          child: state.step == 1
+              ? _buildStep1(
+                  appLocalization,
+                  typography,
+                  context,
+                  state,
+                  palette,
+                )
+              : _buildStep2(),
         ),
       ),
-      persistentFooterButtons: [_buildNextButton(appLocalization, typography)],
+      persistentFooterButtons: [
+        state.step == 1
+            ? _buildNextButton(appLocalization, typography)
+            : _buildConfirmButton(appLocalization, typography),
+      ],
       persistentFooterDecoration: BoxDecoration(),
     );
+  }
+
+  Widget _buildStep1(
+    AppLocalization appLocalization,
+    AppTypography typography,
+    BuildContext context,
+    ProfileCompletionState state,
+    AppPalette palette,
+  ) {
+    return Column(
+      children: [
+        Image.asset('assets/images/profile_completion.png'),
+        const SizedBox(height: 30),
+        Text(
+          appLocalization.letsCompleteYourProfile,
+          style: typography.h4.copyWith(fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 5),
+        Text(
+          appLocalization.itWillHelpUsToKnowMoreAboutYou,
+          style: typography.smallText,
+        ),
+        const SizedBox(height: 30),
+        _buildGenderInput(appLocalization, typography),
+        const SizedBox(height: 15),
+        _buildBirthDateInput(
+          context: context,
+          state: state,
+          typography: typography,
+          appLocalization: appLocalization,
+          palette: palette,
+        ),
+        const SizedBox(height: 15),
+        _buildWeightInput(appLocalization, palette, typography),
+        const SizedBox(height: 15),
+        _buildHeightInput(appLocalization, palette, typography),
+      ],
+    );
+  }
+
+  Widget _buildStep2() {
+    return Column(children: [Text('Step 2')]);
   }
 
   Widget _buildGenderInput(
@@ -204,34 +231,20 @@ class ProfileCompletionScreen extends ConsumerWidget {
     AppLocalization appLocalization,
     AppTypography typography,
   ) {
-    return Row(
-      children: [
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
-            child: SizedBox(
-              height: 60,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      appLocalization.next,
-                      style: typography.largeText.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(width: 4),
-                    Icon(Icons.arrow_forward_ios_outlined, size: 20),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
+    return ExpandedButton(
+      text: appLocalization.next,
+      suffixIcon: Icons.arrow_forward_ios_outlined,
+      onPressed: () => viewModel.nextStep(),
+    );
+  }
+
+  Widget _buildConfirmButton(
+    AppLocalization appLocalization,
+    AppTypography typography,
+  ) {
+    return ExpandedButton(
+      text: appLocalization.confirm,
+      onPressed: () => viewModel.previousStep(),
     );
   }
 }
