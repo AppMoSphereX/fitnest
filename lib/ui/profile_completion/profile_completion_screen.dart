@@ -1,3 +1,4 @@
+import 'package:fitnest/config/constants/assets.dart';
 import 'package:fitnest/config/theme/app_palette.dart';
 import 'package:fitnest/config/theme/theme_extensions.dart';
 import 'package:fitnest/config/theme/typography.dart';
@@ -58,7 +59,7 @@ class ProfileCompletionScreen extends ConsumerWidget {
   ) {
     return Column(
       children: [
-        Image.asset('assets/images/profile_completion.png'),
+        Image.asset(Assets.profileCompletion),
         const SizedBox(height: 30),
         Text(
           appLocalization.letsCompleteYourProfile,
