@@ -30,6 +30,7 @@ class MyApp extends ConsumerWidget {
       ],
       title: 'Fitnest',
       theme: AppTheme.light,
+      debugShowCheckedModeBanner: false,
       darkTheme: AppTheme.dark,
       themeMode: themeMode,
     );
