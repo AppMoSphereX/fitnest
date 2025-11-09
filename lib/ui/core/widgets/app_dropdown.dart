@@ -1,4 +1,3 @@
-
 import 'package:fitnest/config/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
 
@@ -9,16 +8,19 @@ class AppDropdown extends StatelessWidget {
     required this.onChanged,
     required this.validator,
     required this.hint,
+    this.initialValue,
   });
 
   final List<DropdownMenuItem<String>> items;
   final void Function(String?) onChanged;
   final String? Function(String?)? validator;
   final String hint;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField(
+      initialValue: initialValue,
       items: items,
       onChanged: onChanged,
       validator: validator,
