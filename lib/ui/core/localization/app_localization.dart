@@ -40,6 +40,18 @@ class AppLocalization {
     'heightIsRequired': 'Height is required',
     'next': 'Next',
     'confirm': 'Confirm',
+    'whatIsYourGoalTitle': 'What is your goal?',
+    'whatIsYourGoalSubtitle':
+        'It will help us to choose the best program for you',
+    'improveShape': 'Improve Shape',
+    'improveShapeDescription':
+        'I have a low amount of body fat and need / want to build more muscle',
+    'leanAndTone': 'Lean and Tone',
+    'leanAndToneDescription':
+        'I’m “skinny fat”. look thin but have no shape. I want to add lean muscle in the right way',
+    'loseFat': 'Lose Fat',
+    'loseFatDescription':
+        'I have over 10 kg to lose. I want to drop all this fat and gain muscle mass',
   };
 
   static String _get(String label) =>
@@ -79,6 +91,14 @@ class AppLocalization {
   String get heightIsRequired => _get('heightIsRequired');
   String get next => _get('next');
   String get confirm => _get('confirm');
+  String get whatIsYourGoalTitle => _get('whatIsYourGoalTitle');
+  String get whatIsYourGoalSubtitle => _get('whatIsYourGoalSubtitle');
+  String get improveShape => _get('improveShape');
+  String get improveShapeDescription => _get('improveShapeDescription');
+  String get leanAndTone => _get('leanAndTone');
+  String get leanAndToneDescription => _get('leanAndToneDescription');
+  String get loseFat => _get('loseFat');
+  String get loseFatDescription => _get('loseFatDescription');
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
