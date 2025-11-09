@@ -3,9 +3,10 @@ import 'package:fitnest/ui/profile_completion/widgets/goal_item.dart';
 import 'package:flutter/material.dart';
 
 class GoalCarousel extends StatefulWidget {
-  const GoalCarousel({super.key, required this.goals});
+  const GoalCarousel({super.key, required this.goals, required this.onChanged});
 
   final List<GoalData> goals;
+  final Function(Goal) onChanged;
 
   @override
   State<GoalCarousel> createState() => _GoalCarouselState();
@@ -40,6 +41,7 @@ class _GoalCarouselState extends State<GoalCarousel> {
     return SizedBox(
       height: 478,
       child: PageView.builder(
+        onPageChanged: (index) => widget.onChanged(widget.goals[index].goal),
         controller: _pageController,
         itemCount: widget.goals.length,
         itemBuilder: (context, index) {

@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProfileCompletionState implements DiagnosticableTreeMixin {
 
- int get step; String? get gender; DateTime? get dateOfBirth; double? get weight; double? get height; bool get isLoading; String? get error;
+ int get step; String? get gender; DateTime? get dateOfBirth; double? get weight; double? get height; Goal? get goal; bool get isLoading; String? get error;
 /// Create a copy of ProfileCompletionState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,21 +26,21 @@ $ProfileCompletionStateCopyWith<ProfileCompletionState> get copyWith => _$Profil
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ProfileCompletionState'))
-    ..add(DiagnosticsProperty('step', step))..add(DiagnosticsProperty('gender', gender))..add(DiagnosticsProperty('dateOfBirth', dateOfBirth))..add(DiagnosticsProperty('weight', weight))..add(DiagnosticsProperty('height', height))..add(DiagnosticsProperty('isLoading', isLoading))..add(DiagnosticsProperty('error', error));
+    ..add(DiagnosticsProperty('step', step))..add(DiagnosticsProperty('gender', gender))..add(DiagnosticsProperty('dateOfBirth', dateOfBirth))..add(DiagnosticsProperty('weight', weight))..add(DiagnosticsProperty('height', height))..add(DiagnosticsProperty('goal', goal))..add(DiagnosticsProperty('isLoading', isLoading))..add(DiagnosticsProperty('error', error));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileCompletionState&&(identical(other.step, step) || other.step == step)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.dateOfBirth, dateOfBirth) || other.dateOfBirth == dateOfBirth)&&(identical(other.weight, weight) || other.weight == weight)&&(identical(other.height, height) || other.height == height)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileCompletionState&&(identical(other.step, step) || other.step == step)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.dateOfBirth, dateOfBirth) || other.dateOfBirth == dateOfBirth)&&(identical(other.weight, weight) || other.weight == weight)&&(identical(other.height, height) || other.height == height)&&(identical(other.goal, goal) || other.goal == goal)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.error, error) || other.error == error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,step,gender,dateOfBirth,weight,height,isLoading,error);
+int get hashCode => Object.hash(runtimeType,step,gender,dateOfBirth,weight,height,goal,isLoading,error);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ProfileCompletionState(step: $step, gender: $gender, dateOfBirth: $dateOfBirth, weight: $weight, height: $height, isLoading: $isLoading, error: $error)';
+  return 'ProfileCompletionState(step: $step, gender: $gender, dateOfBirth: $dateOfBirth, weight: $weight, height: $height, goal: $goal, isLoading: $isLoading, error: $error)';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $ProfileCompletionStateCopyWith<$Res>  {
   factory $ProfileCompletionStateCopyWith(ProfileCompletionState value, $Res Function(ProfileCompletionState) _then) = _$ProfileCompletionStateCopyWithImpl;
 @useResult
 $Res call({
- int step, String? gender, DateTime? dateOfBirth, double? weight, double? height, bool isLoading, String? error
+ int step, String? gender, DateTime? dateOfBirth, double? weight, double? height, Goal? goal, bool isLoading, String? error
 });
 
 
@@ -68,14 +68,15 @@ class _$ProfileCompletionStateCopyWithImpl<$Res>
 
 /// Create a copy of ProfileCompletionState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? step = null,Object? gender = freezed,Object? dateOfBirth = freezed,Object? weight = freezed,Object? height = freezed,Object? isLoading = null,Object? error = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? step = null,Object? gender = freezed,Object? dateOfBirth = freezed,Object? weight = freezed,Object? height = freezed,Object? goal = freezed,Object? isLoading = null,Object? error = freezed,}) {
   return _then(_self.copyWith(
 step: null == step ? _self.step : step // ignore: cast_nullable_to_non_nullable
 as int,gender: freezed == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
 as String?,dateOfBirth: freezed == dateOfBirth ? _self.dateOfBirth : dateOfBirth // ignore: cast_nullable_to_non_nullable
 as DateTime?,weight: freezed == weight ? _self.weight : weight // ignore: cast_nullable_to_non_nullable
 as double?,height: freezed == height ? _self.height : height // ignore: cast_nullable_to_non_nullable
-as double?,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as double?,goal: freezed == goal ? _self.goal : goal // ignore: cast_nullable_to_non_nullable
+as Goal?,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
@@ -162,10 +163,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int step,  String? gender,  DateTime? dateOfBirth,  double? weight,  double? height,  bool isLoading,  String? error)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int step,  String? gender,  DateTime? dateOfBirth,  double? weight,  double? height,  Goal? goal,  bool isLoading,  String? error)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProfileCompletionState() when $default != null:
-return $default(_that.step,_that.gender,_that.dateOfBirth,_that.weight,_that.height,_that.isLoading,_that.error);case _:
+return $default(_that.step,_that.gender,_that.dateOfBirth,_that.weight,_that.height,_that.goal,_that.isLoading,_that.error);case _:
   return orElse();
 
 }
@@ -183,10 +184,10 @@ return $default(_that.step,_that.gender,_that.dateOfBirth,_that.weight,_that.hei
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int step,  String? gender,  DateTime? dateOfBirth,  double? weight,  double? height,  bool isLoading,  String? error)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int step,  String? gender,  DateTime? dateOfBirth,  double? weight,  double? height,  Goal? goal,  bool isLoading,  String? error)  $default,) {final _that = this;
 switch (_that) {
 case _ProfileCompletionState():
-return $default(_that.step,_that.gender,_that.dateOfBirth,_that.weight,_that.height,_that.isLoading,_that.error);case _:
+return $default(_that.step,_that.gender,_that.dateOfBirth,_that.weight,_that.height,_that.goal,_that.isLoading,_that.error);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -203,10 +204,10 @@ return $default(_that.step,_that.gender,_that.dateOfBirth,_that.weight,_that.hei
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int step,  String? gender,  DateTime? dateOfBirth,  double? weight,  double? height,  bool isLoading,  String? error)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int step,  String? gender,  DateTime? dateOfBirth,  double? weight,  double? height,  Goal? goal,  bool isLoading,  String? error)?  $default,) {final _that = this;
 switch (_that) {
 case _ProfileCompletionState() when $default != null:
-return $default(_that.step,_that.gender,_that.dateOfBirth,_that.weight,_that.height,_that.isLoading,_that.error);case _:
+return $default(_that.step,_that.gender,_that.dateOfBirth,_that.weight,_that.height,_that.goal,_that.isLoading,_that.error);case _:
   return null;
 
 }
@@ -218,7 +219,7 @@ return $default(_that.step,_that.gender,_that.dateOfBirth,_that.weight,_that.hei
 
 
 class _ProfileCompletionState with DiagnosticableTreeMixin implements ProfileCompletionState {
-  const _ProfileCompletionState({this.step = 1, this.gender, this.dateOfBirth, this.weight, this.height, this.isLoading = false, this.error});
+  const _ProfileCompletionState({this.step = 1, this.gender, this.dateOfBirth, this.weight, this.height, this.goal, this.isLoading = false, this.error});
   
 
 @override@JsonKey() final  int step;
@@ -226,6 +227,7 @@ class _ProfileCompletionState with DiagnosticableTreeMixin implements ProfileCom
 @override final  DateTime? dateOfBirth;
 @override final  double? weight;
 @override final  double? height;
+@override final  Goal? goal;
 @override@JsonKey() final  bool isLoading;
 @override final  String? error;
 
@@ -240,21 +242,21 @@ _$ProfileCompletionStateCopyWith<_ProfileCompletionState> get copyWith => __$Pro
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ProfileCompletionState'))
-    ..add(DiagnosticsProperty('step', step))..add(DiagnosticsProperty('gender', gender))..add(DiagnosticsProperty('dateOfBirth', dateOfBirth))..add(DiagnosticsProperty('weight', weight))..add(DiagnosticsProperty('height', height))..add(DiagnosticsProperty('isLoading', isLoading))..add(DiagnosticsProperty('error', error));
+    ..add(DiagnosticsProperty('step', step))..add(DiagnosticsProperty('gender', gender))..add(DiagnosticsProperty('dateOfBirth', dateOfBirth))..add(DiagnosticsProperty('weight', weight))..add(DiagnosticsProperty('height', height))..add(DiagnosticsProperty('goal', goal))..add(DiagnosticsProperty('isLoading', isLoading))..add(DiagnosticsProperty('error', error));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileCompletionState&&(identical(other.step, step) || other.step == step)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.dateOfBirth, dateOfBirth) || other.dateOfBirth == dateOfBirth)&&(identical(other.weight, weight) || other.weight == weight)&&(identical(other.height, height) || other.height == height)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileCompletionState&&(identical(other.step, step) || other.step == step)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.dateOfBirth, dateOfBirth) || other.dateOfBirth == dateOfBirth)&&(identical(other.weight, weight) || other.weight == weight)&&(identical(other.height, height) || other.height == height)&&(identical(other.goal, goal) || other.goal == goal)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.error, error) || other.error == error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,step,gender,dateOfBirth,weight,height,isLoading,error);
+int get hashCode => Object.hash(runtimeType,step,gender,dateOfBirth,weight,height,goal,isLoading,error);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ProfileCompletionState(step: $step, gender: $gender, dateOfBirth: $dateOfBirth, weight: $weight, height: $height, isLoading: $isLoading, error: $error)';
+  return 'ProfileCompletionState(step: $step, gender: $gender, dateOfBirth: $dateOfBirth, weight: $weight, height: $height, goal: $goal, isLoading: $isLoading, error: $error)';
 }
 
 
@@ -265,7 +267,7 @@ abstract mixin class _$ProfileCompletionStateCopyWith<$Res> implements $ProfileC
   factory _$ProfileCompletionStateCopyWith(_ProfileCompletionState value, $Res Function(_ProfileCompletionState) _then) = __$ProfileCompletionStateCopyWithImpl;
 @override @useResult
 $Res call({
- int step, String? gender, DateTime? dateOfBirth, double? weight, double? height, bool isLoading, String? error
+ int step, String? gender, DateTime? dateOfBirth, double? weight, double? height, Goal? goal, bool isLoading, String? error
 });
 
 
@@ -282,14 +284,15 @@ class __$ProfileCompletionStateCopyWithImpl<$Res>
 
 /// Create a copy of ProfileCompletionState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? step = null,Object? gender = freezed,Object? dateOfBirth = freezed,Object? weight = freezed,Object? height = freezed,Object? isLoading = null,Object? error = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? step = null,Object? gender = freezed,Object? dateOfBirth = freezed,Object? weight = freezed,Object? height = freezed,Object? goal = freezed,Object? isLoading = null,Object? error = freezed,}) {
   return _then(_ProfileCompletionState(
 step: null == step ? _self.step : step // ignore: cast_nullable_to_non_nullable
 as int,gender: freezed == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
 as String?,dateOfBirth: freezed == dateOfBirth ? _self.dateOfBirth : dateOfBirth // ignore: cast_nullable_to_non_nullable
 as DateTime?,weight: freezed == weight ? _self.weight : weight // ignore: cast_nullable_to_non_nullable
 as double?,height: freezed == height ? _self.height : height // ignore: cast_nullable_to_non_nullable
-as double?,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as double?,goal: freezed == goal ? _self.goal : goal // ignore: cast_nullable_to_non_nullable
+as Goal?,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String?,
   ));

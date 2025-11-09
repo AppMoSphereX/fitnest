@@ -1,3 +1,4 @@
+import 'package:fitnest/domain/models/user/goal.dart';
 import 'package:fitnest/ui/profile_completion/profile_completion_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -24,6 +25,10 @@ class ProfileCompletionVM extends _$ProfileCompletionVM {
 
   void setHeight(double height) {
     state = state.copyWith(height: height);
+  }
+
+  void setGoal(Goal goal) {
+    state = state.copyWith(goal: goal);
   }
 
   void nextStep() {

@@ -1,3 +1,4 @@
+import 'package:fitnest/domain/models/user/goal.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
@@ -11,6 +12,7 @@ abstract class ProfileCompletionState with _$ProfileCompletionState {
     DateTime? dateOfBirth,
     double? weight,
     double? height,
+    Goal? goal,
     @Default(false) bool isLoading,
     String? error,
   }) = _ProfileCompletionState;

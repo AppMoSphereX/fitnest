@@ -2,7 +2,6 @@ import 'package:fitnest/config/constants/assets.dart';
 import 'package:fitnest/config/theme/app_palette.dart';
 import 'package:fitnest/config/theme/theme_extensions.dart';
 import 'package:fitnest/config/theme/typography.dart';
-import 'package:fitnest/domain/models/user/goal.dart';
 import 'package:fitnest/ui/core/localization/app_localization.dart';
 import 'package:fitnest/ui/core/localization/localization_extensions.dart';
 import 'package:fitnest/ui/core/widgets/app_dropdown.dart';
@@ -10,7 +9,7 @@ import 'package:fitnest/ui/core/widgets/app_form_field.dart';
 import 'package:fitnest/ui/core/widgets/expanded_button.dart';
 import 'package:fitnest/ui/profile_completion/profile_completion_state.dart';
 import 'package:fitnest/ui/profile_completion/profile_completion_vm.dart';
-import 'package:fitnest/ui/profile_completion/widgets/goal_carousel.dart';
+import 'package:fitnest/ui/profile_completion/widgets/goal_selection.dart';
 import 'package:fitnest/utils/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,7 +30,7 @@ class ProfileCompletionScreen extends ConsumerWidget {
     return Scaffold(
       body: state.step == 1
           ? _buildStep1(appLocalization, typography, context, state, palette)
-          : _buildStep2(typography, appLocalization, palette),
+          : GoalSelection(onGoalChanged: (goal) => viewModel.setGoal(goal)),
       persistentFooterButtons: [
         state.step == 1
             ? _buildNextButton(appLocalization, typography)
@@ -80,33 +79,6 @@ class ProfileCompletionScreen extends ConsumerWidget {
             _buildHeightInput(appLocalization, palette, typography),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildStep2(
-    AppTypography typography,
-    AppLocalization appLocalization,
-    AppPalette palette,
-  ) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 50.0, bottom: 50.0),
-      child: Column(
-        children: [
-          Text(
-            appLocalization.whatIsYourGoalTitle,
-            style: typography.h4.copyWith(fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 5),
-          Text(
-            appLocalization.whatIsYourGoalSubtitle,
-            style: typography.smallText,
-          ),
-          SizedBox(height: 50),
-          Expanded(
-            child: _buildGoalInput(appLocalization, palette, typography),
-          ),
-        ],
       ),
     );
   }
@@ -266,34 +238,5 @@ class ProfileCompletionScreen extends ConsumerWidget {
       text: appLocalization.confirm,
       onPressed: () => viewModel.previousStep(),
     );
-  }
-
-  Widget _buildGoalInput(
-    AppLocalization appLocalization,
-    AppPalette palette,
-    AppTypography typography,
-  ) {
-    final goals = [
-      GoalData(
-        goal: Goal.improveShape,
-        image: Assets.improveShape,
-        title: appLocalization.improveShape,
-        description: appLocalization.improveShapeDescription,
-      ),
-      GoalData(
-        goal: Goal.leanAndTone,
-        image: Assets.leanAndTone,
-        title: appLocalization.leanAndTone,
-        description: appLocalization.leanAndToneDescription,
-      ),
-      GoalData(
-        goal: Goal.loseFat,
-        image: Assets.loseFat,
-        title: appLocalization.loseFat,
-        description: appLocalization.loseFatDescription,
-      ),
-    ];
-
-    return GoalCarousel(goals: goals);
   }
 }
