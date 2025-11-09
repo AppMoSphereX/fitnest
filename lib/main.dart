@@ -20,6 +20,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(appThemeProvider);
+
     return MaterialApp.router(
       routerConfig: ref.watch(routerProvider),
       localizationsDelegates: [
@@ -29,6 +30,7 @@ class MyApp extends ConsumerWidget {
       ],
       title: 'Fitnest',
       theme: AppTheme.light,
+      debugShowCheckedModeBanner: false,
       darkTheme: AppTheme.dark,
       themeMode: themeMode,
     );

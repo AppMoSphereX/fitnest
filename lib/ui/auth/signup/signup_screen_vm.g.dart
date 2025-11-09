@@ -41,7 +41,7 @@ final class SignupScreenVMProvider
   }
 }
 
-String _$signupScreenVMHash() => r'20fad3e53603032bcb9d6d738f284437f849d32e';
+String _$signupScreenVMHash() => r'27473c92ce0f4a248ac8a08c7b5ce5a7831fa5a3';
 
 abstract class _$SignupScreenVM extends $Notifier<SignupScreenState> {
   SignupScreenState build();

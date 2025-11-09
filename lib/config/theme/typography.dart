@@ -108,7 +108,10 @@ class AppTypography extends ThemeExtension<AppTypography> {
     ),
   );
 
-  static TextTheme get textTheme => GoogleFonts.poppinsTextTheme();
+  static TextTheme textTheme(Brightness brightness) {
+    final baseTheme = ThemeData(brightness: brightness);
+    return GoogleFonts.poppinsTextTheme(baseTheme.textTheme);
+  }
 
   @override
   ThemeExtension<AppTypography> copyWith({

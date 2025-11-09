@@ -1,7 +1,7 @@
 import 'package:fitnest/config/theme/theme_extensions.dart';
 import 'package:fitnest/routing/routes.dart';
 import 'package:fitnest/ui/auth/signup/signup_screen_vm.dart';
-import 'package:fitnest/ui/core/localization/app_localization.dart';
+import 'package:fitnest/ui/core/localization/localization_extensions.dart';
 import 'package:fitnest/ui/core/widgets/app_form_field.dart';
 import 'package:fitnest/utils/validators.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +37,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(signupScreenVMProvider);
-    final appLocalization = AppLocalization.of(context);
+    final appLocalization = context.localization;
     final palette = context.palette;
     final typography = context.typography;
 
@@ -134,8 +134,8 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                                   widget.viewModel.signup(
                                     _emailController.text,
                                     _passwordController.text,
-                                    '',
-                                    '',
+                                    _firstNameController.text,
+                                    _lastNameController.text,
                                   );
                                 }
                               }

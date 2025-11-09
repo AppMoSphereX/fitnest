@@ -10,6 +10,8 @@ class AuthService {
 
   bool get isAuthenticated => _auth.currentUser != null;
 
+  String? get currentUserId => _auth.currentUser?.uid;
+
   Stream<User?> get authStateChanges => _auth.authStateChanges();
 
   Future<Result<SignupResponse>> signupWithEmailAndPassword(
@@ -24,9 +26,7 @@ class AuthService {
         final user = result.user!;
         return Result.ok(
           SignupResponse(
-            displayName: user.displayName ?? '',
-            email: user.email ?? '',
-            refreshToken: user.refreshToken ?? '',
+            userId: user.uid,
           ),
         );
       } else {
