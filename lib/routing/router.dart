@@ -1,4 +1,4 @@
-import 'package:fitnest/domain/auth_session_manager.dart';
+import 'package:fitnest/routing/auth_session_manager.dart';
 import 'package:fitnest/domain/models/auth/auth_status.dart';
 import 'package:fitnest/ui/auth/signup/signup_screen.dart';
 import 'package:fitnest/ui/auth/signup/signup_screen_vm.dart';

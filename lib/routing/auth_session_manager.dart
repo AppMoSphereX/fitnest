@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:fitnest/domain/repositories/auth_repository.dart';
 import 'package:fitnest/data/repositories/repositories_providers.dart';
+import 'package:fitnest/domain/repositories/auth_repository.dart';
 import 'package:fitnest/domain/repositories/user_repository.dart';
 import 'package:fitnest/domain/models/auth/auth_status.dart';
 import 'package:fitnest/domain/models/user/user.dart';
