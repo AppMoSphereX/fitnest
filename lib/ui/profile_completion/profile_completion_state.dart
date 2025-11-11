@@ -12,7 +12,7 @@ abstract class ProfileCompletionState with _$ProfileCompletionState {
     DateTime? dateOfBirth,
     double? weight,
     double? height,
-    Goal? goal,
+    @Default(Goal.leanAndTone) Goal? goal,
     @Default(false) bool isLoading,
     String? error,
   }) = _ProfileCompletionState;

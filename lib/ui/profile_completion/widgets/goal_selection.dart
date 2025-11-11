@@ -7,9 +7,14 @@ import 'package:fitnest/ui/profile_completion/widgets/goal_carousel.dart';
 import 'package:flutter/material.dart';
 
 class GoalSelection extends StatelessWidget {
-  const GoalSelection({super.key, required this.onGoalChanged});
+  const GoalSelection({
+    super.key,
+    required this.onGoalChanged,
+    this.initialGoal,
+  });
 
   final Function(Goal) onGoalChanged;
+  final Goal? initialGoal;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +39,7 @@ class GoalSelection extends StatelessWidget {
             child: GoalCarousel(
               goals: _getGoals(localization),
               onChanged: onGoalChanged,
+              initialGoal: initialGoal,
             ),
           ),
         ],

@@ -32,7 +32,10 @@ class ProfileCompletionScreen extends ConsumerWidget {
               weight: state.weight,
               height: state.height,
             )
-          : GoalSelection(onGoalChanged: (goal) => viewModel.setGoal(goal)),
+          : GoalSelection(
+              onGoalChanged: (goal) => viewModel.setGoal(goal),
+              initialGoal: state.goal,
+            ),
       persistentFooterButtons: [
         state.step == 1
             ? _buildNextButton(appLocalization, typography)

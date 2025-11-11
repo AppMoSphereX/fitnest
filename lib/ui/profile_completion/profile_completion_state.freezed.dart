@@ -219,7 +219,7 @@ return $default(_that.step,_that.gender,_that.dateOfBirth,_that.weight,_that.hei
 
 
 class _ProfileCompletionState with DiagnosticableTreeMixin implements ProfileCompletionState {
-  const _ProfileCompletionState({this.step = 1, this.gender, this.dateOfBirth, this.weight, this.height, this.goal, this.isLoading = false, this.error});
+  const _ProfileCompletionState({this.step = 1, this.gender, this.dateOfBirth, this.weight, this.height, this.goal = Goal.leanAndTone, this.isLoading = false, this.error});
   
 
 @override@JsonKey() final  int step;
@@ -227,7 +227,7 @@ class _ProfileCompletionState with DiagnosticableTreeMixin implements ProfileCom
 @override final  DateTime? dateOfBirth;
 @override final  double? weight;
 @override final  double? height;
-@override final  Goal? goal;
+@override@JsonKey() final  Goal? goal;
 @override@JsonKey() final  bool isLoading;
 @override final  String? error;
 

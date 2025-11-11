@@ -3,9 +3,15 @@ import 'package:fitnest/ui/profile_completion/widgets/goal_item.dart';
 import 'package:flutter/material.dart';
 
 class GoalCarousel extends StatefulWidget {
-  const GoalCarousel({super.key, required this.goals, required this.onChanged});
+  const GoalCarousel({
+    super.key,
+    required this.goals,
+    required this.onChanged,
+    this.initialGoal,
+  });
 
   final List<GoalData> goals;
+  final Goal? initialGoal;
   final Function(Goal) onChanged;
 
   @override
@@ -14,12 +20,22 @@ class GoalCarousel extends StatefulWidget {
 
 class _GoalCarouselState extends State<GoalCarousel> {
   late PageController _pageController;
-  double _currentPageOffset = 1.0;
+  late double _currentPageOffset;
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(initialPage: 1, viewportFraction: 0.75);
+    final initialIndex = widget.goals.indexOf(
+      widget.goals.firstWhere(
+        (goalData) => goalData.goal == widget.initialGoal,
+        orElse: () => widget.goals.first,
+      ),
+    );
+    _currentPageOffset = initialIndex.toDouble();
+    _pageController = PageController(
+      initialPage: initialIndex,
+      viewportFraction: 0.75,
+    );
     _pageController.addListener(_updatePageOffset);
   }
 
