@@ -16,5 +16,9 @@ AuthRepository authRepository(Ref ref) {
 @riverpod
 UserRepository userRepository(Ref ref) {
   final firestoreService = ref.read(firestoreServiceProvider);
-  return UserRepositoryRemote(firestoreService: firestoreService);
+  final authService = ref.read(authServiceProvider);
+  return UserRepositoryRemote(
+    firestoreService: firestoreService,
+    authService: authService,
+  );
 }

@@ -45,8 +45,8 @@ class AuthSessionManager extends ChangeNotifier {
       return;
     }
 
-    final result = await _userRepository.getUserProfile(userId);
-    
+    final result = await _userRepository.getUserProfile();
+
     switch (result) {
       case Ok():
         final user = result.value;
@@ -81,5 +81,3 @@ AuthSessionManager authSessionManager(Ref ref) {
   ref.onDispose(manager.dispose);
   return manager;
 }
-
-

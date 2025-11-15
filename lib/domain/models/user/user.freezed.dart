@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$User implements DiagnosticableTreeMixin {
 
- String get email; String? get firstName; String? get lastName; String? get gender; DateTime? get dateOfBirth; double? get weight; double? get height; Goal? get goal;
+ String get id; String? get email; String? get firstName; String? get lastName; String? get gender; DateTime? get dateOfBirth; double? get weight; double? get height; Goal? get goal;
 /// Create a copy of User
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,21 +26,21 @@ $UserCopyWith<User> get copyWith => _$UserCopyWithImpl<User>(this as User, _$ide
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'User'))
-    ..add(DiagnosticsProperty('email', email))..add(DiagnosticsProperty('firstName', firstName))..add(DiagnosticsProperty('lastName', lastName))..add(DiagnosticsProperty('gender', gender))..add(DiagnosticsProperty('dateOfBirth', dateOfBirth))..add(DiagnosticsProperty('weight', weight))..add(DiagnosticsProperty('height', height))..add(DiagnosticsProperty('goal', goal));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('email', email))..add(DiagnosticsProperty('firstName', firstName))..add(DiagnosticsProperty('lastName', lastName))..add(DiagnosticsProperty('gender', gender))..add(DiagnosticsProperty('dateOfBirth', dateOfBirth))..add(DiagnosticsProperty('weight', weight))..add(DiagnosticsProperty('height', height))..add(DiagnosticsProperty('goal', goal));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is User&&(identical(other.email, email) || other.email == email)&&(identical(other.firstName, firstName) || other.firstName == firstName)&&(identical(other.lastName, lastName) || other.lastName == lastName)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.dateOfBirth, dateOfBirth) || other.dateOfBirth == dateOfBirth)&&(identical(other.weight, weight) || other.weight == weight)&&(identical(other.height, height) || other.height == height)&&(identical(other.goal, goal) || other.goal == goal));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is User&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.firstName, firstName) || other.firstName == firstName)&&(identical(other.lastName, lastName) || other.lastName == lastName)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.dateOfBirth, dateOfBirth) || other.dateOfBirth == dateOfBirth)&&(identical(other.weight, weight) || other.weight == weight)&&(identical(other.height, height) || other.height == height)&&(identical(other.goal, goal) || other.goal == goal));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,email,firstName,lastName,gender,dateOfBirth,weight,height,goal);
+int get hashCode => Object.hash(runtimeType,id,email,firstName,lastName,gender,dateOfBirth,weight,height,goal);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'User(email: $email, firstName: $firstName, lastName: $lastName, gender: $gender, dateOfBirth: $dateOfBirth, weight: $weight, height: $height, goal: $goal)';
+  return 'User(id: $id, email: $email, firstName: $firstName, lastName: $lastName, gender: $gender, dateOfBirth: $dateOfBirth, weight: $weight, height: $height, goal: $goal)';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $UserCopyWith<$Res>  {
   factory $UserCopyWith(User value, $Res Function(User) _then) = _$UserCopyWithImpl;
 @useResult
 $Res call({
- String email, String? firstName, String? lastName, String? gender, DateTime? dateOfBirth, double? weight, double? height, Goal? goal
+ String id, String? email, String? firstName, String? lastName, String? gender, DateTime? dateOfBirth, double? weight, double? height, Goal? goal
 });
 
 
@@ -68,10 +68,11 @@ class _$UserCopyWithImpl<$Res>
 
 /// Create a copy of User
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? email = null,Object? firstName = freezed,Object? lastName = freezed,Object? gender = freezed,Object? dateOfBirth = freezed,Object? weight = freezed,Object? height = freezed,Object? goal = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? email = freezed,Object? firstName = freezed,Object? lastName = freezed,Object? gender = freezed,Object? dateOfBirth = freezed,Object? weight = freezed,Object? height = freezed,Object? goal = freezed,}) {
   return _then(_self.copyWith(
-email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,firstName: freezed == firstName ? _self.firstName : firstName // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String?,firstName: freezed == firstName ? _self.firstName : firstName // ignore: cast_nullable_to_non_nullable
 as String?,lastName: freezed == lastName ? _self.lastName : lastName // ignore: cast_nullable_to_non_nullable
 as String?,gender: freezed == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
 as String?,dateOfBirth: freezed == dateOfBirth ? _self.dateOfBirth : dateOfBirth // ignore: cast_nullable_to_non_nullable
@@ -163,10 +164,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String email,  String? firstName,  String? lastName,  String? gender,  DateTime? dateOfBirth,  double? weight,  double? height,  Goal? goal)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String? email,  String? firstName,  String? lastName,  String? gender,  DateTime? dateOfBirth,  double? weight,  double? height,  Goal? goal)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _User() when $default != null:
-return $default(_that.email,_that.firstName,_that.lastName,_that.gender,_that.dateOfBirth,_that.weight,_that.height,_that.goal);case _:
+return $default(_that.id,_that.email,_that.firstName,_that.lastName,_that.gender,_that.dateOfBirth,_that.weight,_that.height,_that.goal);case _:
   return orElse();
 
 }
@@ -184,10 +185,10 @@ return $default(_that.email,_that.firstName,_that.lastName,_that.gender,_that.da
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String email,  String? firstName,  String? lastName,  String? gender,  DateTime? dateOfBirth,  double? weight,  double? height,  Goal? goal)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String? email,  String? firstName,  String? lastName,  String? gender,  DateTime? dateOfBirth,  double? weight,  double? height,  Goal? goal)  $default,) {final _that = this;
 switch (_that) {
 case _User():
-return $default(_that.email,_that.firstName,_that.lastName,_that.gender,_that.dateOfBirth,_that.weight,_that.height,_that.goal);case _:
+return $default(_that.id,_that.email,_that.firstName,_that.lastName,_that.gender,_that.dateOfBirth,_that.weight,_that.height,_that.goal);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -204,10 +205,10 @@ return $default(_that.email,_that.firstName,_that.lastName,_that.gender,_that.da
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String email,  String? firstName,  String? lastName,  String? gender,  DateTime? dateOfBirth,  double? weight,  double? height,  Goal? goal)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String? email,  String? firstName,  String? lastName,  String? gender,  DateTime? dateOfBirth,  double? weight,  double? height,  Goal? goal)?  $default,) {final _that = this;
 switch (_that) {
 case _User() when $default != null:
-return $default(_that.email,_that.firstName,_that.lastName,_that.gender,_that.dateOfBirth,_that.weight,_that.height,_that.goal);case _:
+return $default(_that.id,_that.email,_that.firstName,_that.lastName,_that.gender,_that.dateOfBirth,_that.weight,_that.height,_that.goal);case _:
   return null;
 
 }
@@ -219,10 +220,11 @@ return $default(_that.email,_that.firstName,_that.lastName,_that.gender,_that.da
 
 
 class _User extends User with DiagnosticableTreeMixin {
-  const _User({required this.email, this.firstName, this.lastName, this.gender, this.dateOfBirth, this.weight, this.height, this.goal}): super._();
+  const _User({required this.id, this.email, this.firstName, this.lastName, this.gender, this.dateOfBirth, this.weight, this.height, this.goal}): super._();
   
 
-@override final  String email;
+@override final  String id;
+@override final  String? email;
 @override final  String? firstName;
 @override final  String? lastName;
 @override final  String? gender;
@@ -242,21 +244,21 @@ _$UserCopyWith<_User> get copyWith => __$UserCopyWithImpl<_User>(this, _$identit
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'User'))
-    ..add(DiagnosticsProperty('email', email))..add(DiagnosticsProperty('firstName', firstName))..add(DiagnosticsProperty('lastName', lastName))..add(DiagnosticsProperty('gender', gender))..add(DiagnosticsProperty('dateOfBirth', dateOfBirth))..add(DiagnosticsProperty('weight', weight))..add(DiagnosticsProperty('height', height))..add(DiagnosticsProperty('goal', goal));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('email', email))..add(DiagnosticsProperty('firstName', firstName))..add(DiagnosticsProperty('lastName', lastName))..add(DiagnosticsProperty('gender', gender))..add(DiagnosticsProperty('dateOfBirth', dateOfBirth))..add(DiagnosticsProperty('weight', weight))..add(DiagnosticsProperty('height', height))..add(DiagnosticsProperty('goal', goal));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _User&&(identical(other.email, email) || other.email == email)&&(identical(other.firstName, firstName) || other.firstName == firstName)&&(identical(other.lastName, lastName) || other.lastName == lastName)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.dateOfBirth, dateOfBirth) || other.dateOfBirth == dateOfBirth)&&(identical(other.weight, weight) || other.weight == weight)&&(identical(other.height, height) || other.height == height)&&(identical(other.goal, goal) || other.goal == goal));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _User&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.firstName, firstName) || other.firstName == firstName)&&(identical(other.lastName, lastName) || other.lastName == lastName)&&(identical(other.gender, gender) || other.gender == gender)&&(identical(other.dateOfBirth, dateOfBirth) || other.dateOfBirth == dateOfBirth)&&(identical(other.weight, weight) || other.weight == weight)&&(identical(other.height, height) || other.height == height)&&(identical(other.goal, goal) || other.goal == goal));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,email,firstName,lastName,gender,dateOfBirth,weight,height,goal);
+int get hashCode => Object.hash(runtimeType,id,email,firstName,lastName,gender,dateOfBirth,weight,height,goal);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'User(email: $email, firstName: $firstName, lastName: $lastName, gender: $gender, dateOfBirth: $dateOfBirth, weight: $weight, height: $height, goal: $goal)';
+  return 'User(id: $id, email: $email, firstName: $firstName, lastName: $lastName, gender: $gender, dateOfBirth: $dateOfBirth, weight: $weight, height: $height, goal: $goal)';
 }
 
 
@@ -267,7 +269,7 @@ abstract mixin class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) _then) = __$UserCopyWithImpl;
 @override @useResult
 $Res call({
- String email, String? firstName, String? lastName, String? gender, DateTime? dateOfBirth, double? weight, double? height, Goal? goal
+ String id, String? email, String? firstName, String? lastName, String? gender, DateTime? dateOfBirth, double? weight, double? height, Goal? goal
 });
 
 
@@ -284,10 +286,11 @@ class __$UserCopyWithImpl<$Res>
 
 /// Create a copy of User
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? email = null,Object? firstName = freezed,Object? lastName = freezed,Object? gender = freezed,Object? dateOfBirth = freezed,Object? weight = freezed,Object? height = freezed,Object? goal = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? email = freezed,Object? firstName = freezed,Object? lastName = freezed,Object? gender = freezed,Object? dateOfBirth = freezed,Object? weight = freezed,Object? height = freezed,Object? goal = freezed,}) {
   return _then(_User(
-email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,firstName: freezed == firstName ? _self.firstName : firstName // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String?,firstName: freezed == firstName ? _self.firstName : firstName // ignore: cast_nullable_to_non_nullable
 as String?,lastName: freezed == lastName ? _self.lastName : lastName // ignore: cast_nullable_to_non_nullable
 as String?,gender: freezed == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
 as String?,dateOfBirth: freezed == dateOfBirth ? _self.dateOfBirth : dateOfBirth // ignore: cast_nullable_to_non_nullable

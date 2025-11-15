@@ -19,11 +19,11 @@ class FirestoreService {
     }
   }
 
-  Future<Result<void>> createUserProfile(String userId, UserDto userDto) async {
+  Future<Result<void>> createUserProfile(UserDto userDto) async {
     try {
       await _firestore
           .collection(usersCollection)
-          .doc(userId)
+          .doc(userDto.id)
           .set(userDto.toFirestore());
       return Result.ok(null);
     } on Exception catch (e) {
@@ -31,11 +31,11 @@ class FirestoreService {
     }
   }
 
-  Future<Result<void>> updateUserProfile(String userId, UserDto userDto) async {
+  Future<Result<void>> updateUserProfile(UserDto userDto) async {
     try {
       await _firestore
           .collection(usersCollection)
-          .doc(userId)
+          .doc(userDto.id)
           .update(userDto.toFirestore());
       return Result.ok(null);
     } on Exception catch (e) {

@@ -32,14 +32,16 @@ class ProfileCompletionScreen extends ConsumerWidget {
               weight: state.weight,
               height: state.height,
             )
-          : GoalSelection(
+          : state.step == 2
+          ? GoalSelection(
               onGoalChanged: (goal) => viewModel.setGoal(goal),
               initialGoal: state.goal,
-            ),
+            )
+          : _buildStep3(context),
       persistentFooterButtons: [
         state.step == 1
             ? _buildNextButton(appLocalization, typography)
-            : _buildConfirmButton(appLocalization, typography),
+            : _buildConfirmButton(appLocalization, typography, state.isLoading),
       ],
       persistentFooterDecoration: BoxDecoration(),
     );
@@ -59,10 +61,21 @@ class ProfileCompletionScreen extends ConsumerWidget {
   Widget _buildConfirmButton(
     AppLocalization appLocalization,
     AppTypography typography,
+    bool isLoading,
   ) {
     return ExpandedButton(
       text: appLocalization.confirm,
-      onPressed: () => viewModel.previousStep(),
+      onPressed: () => viewModel.completeProfile(),
+      isLoading: isLoading,
+    );
+  }
+
+  Widget _buildStep3(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(30.0),
+      child: Center(
+        child: Text('Profile completed. Now you can start your journey.'),
+      ),
     );
   }
 }

@@ -9,7 +9,8 @@ abstract class User with _$User {
   const User._();
 
   const factory User({
-    required String email,
+    required String id,
+    String? email,
     String? firstName,
     String? lastName,
     String? gender,
@@ -33,5 +34,5 @@ abstract class User with _$User {
   }
 
   String get displayName =>
-      firstName != null || lastName != null ? '$firstName $lastName' : email;
+      firstName != null || lastName != null ? '$firstName $lastName' : email ?? '';
 }

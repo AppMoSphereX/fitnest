@@ -6,6 +6,7 @@ class ExpandedButton extends StatelessWidget {
     this.text,
     this.prefixIcon,
     this.suffixIcon,
+    this.isLoading = false,
     super.key,
   });
 
@@ -13,10 +14,10 @@ class ExpandedButton extends StatelessWidget {
   final String? text;
   final IconData? prefixIcon;
   final IconData? suffixIcon;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
       child: Row(
@@ -25,20 +26,21 @@ class ExpandedButton extends StatelessWidget {
             child: SizedBox(
               height: 60,
               child: ElevatedButton(
-                onPressed: onPressed,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    if (prefixIcon != null) Icon(prefixIcon, size: 20),
-                    if (prefixIcon != null && text != null) SizedBox(width: 4),
-                    if (text != null)
-                      Text(
-                        text!,
+                onPressed: isLoading ? null : onPressed,
+                child: isLoading
+                    ? CircularProgressIndicator(color: Colors.white)
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          if (prefixIcon != null) Icon(prefixIcon, size: 20),
+                          if (prefixIcon != null && text != null)
+                            SizedBox(width: 4),
+                          if (text != null) Text(text!),
+                          if (suffixIcon != null && text != null)
+                            SizedBox(width: 4),
+                          if (suffixIcon != null) Icon(suffixIcon, size: 20),
+                        ],
                       ),
-                    if (suffixIcon != null && text != null) SizedBox(width: 4),
-                    if (suffixIcon != null) Icon(suffixIcon, size: 20),
-                  ],
-                ),
               ),
             ),
           ),

@@ -6,6 +6,7 @@ import 'package:fitnest/domain/models/user/user.dart';
 extension UserDtoMapper on UserDto {
   User toDomain() {
     return User(
+      id: id,
       email: email,
       firstName: firstName,
       lastName: lastName,
@@ -21,6 +22,7 @@ extension UserDtoMapper on UserDto {
 extension UserMapper on User {
   UserDto toDto() {
     return UserDto(
+      id: id,
       email: email,
       firstName: firstName,
       lastName: lastName,

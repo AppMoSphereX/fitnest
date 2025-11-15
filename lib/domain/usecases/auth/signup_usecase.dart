@@ -34,8 +34,7 @@ class SignupUsecase {
 
     final userId = (signupResult as Ok<String>).value;
     final userResult = await _userRepository.createUserProfile(
-      userId,
-      User(email: email, firstName: firstName, lastName: lastName),
+      User(id: userId, email: email, firstName: firstName, lastName: lastName),
     );
 
     switch (userResult) {

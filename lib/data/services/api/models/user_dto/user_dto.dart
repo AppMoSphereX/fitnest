@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserDto {
-  final String email;
+  final String id;
+  final String? email;
   final String? firstName;
   final String? lastName;
   final String? gender;
@@ -11,7 +12,8 @@ class UserDto {
   final String? goal;
 
   UserDto({
-    required this.email,
+    required this.id,
+    this.email,
     this.firstName,
     this.lastName,
     this.gender,
@@ -24,6 +26,7 @@ class UserDto {
   factory UserDto.fromFirestore(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
     return UserDto(
+      id: doc.id,
       email: data['email'] as String? ?? '',
       firstName: data['firstName'] as String?,
       lastName: data['lastName'] as String?,
