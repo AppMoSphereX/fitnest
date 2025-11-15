@@ -11,8 +11,8 @@ part 'profile_completion_vm.g.dart';
 
 @riverpod
 class ProfileCompletionVM extends _$ProfileCompletionVM {
-  late final AuthRepository _authRepository;
-  late final UserRepository _userRepository;
+  late AuthRepository _authRepository;
+  late UserRepository _userRepository;
 
   @override
   ProfileCompletionState build() {
