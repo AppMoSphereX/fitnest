@@ -27,4 +27,32 @@ class Validators {
     }
     return null;
   }
+
+  static String? validateGender(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Gender is required';
+    }
+    return null;
+  }
+
+  static String? validateDateOfBirth(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Date of Birth is required';
+    }
+    return null;
+  }
+
+  static String? validateWeight(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Weight is required';
+    }
+    return null;
+  }
+
+  static String? validateHeight(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Height is required';
+    }
+    return null;
+  }
 }

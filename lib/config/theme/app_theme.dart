@@ -23,7 +23,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: brightness,
-      textTheme: AppTypography.textTheme,
+      textTheme: AppTypography.textTheme(brightness),
       colorScheme: ColorScheme.fromSeed(
         seedColor: palette.primaryGradientStart,
         primary: palette.primaryGradientStart,

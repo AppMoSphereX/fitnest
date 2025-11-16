@@ -9,29 +9,34 @@ class AppFormField extends StatelessWidget {
     IconData? prefixIcon,
     String? Function(String?)? validator,
     bool obscureText = false,
+    Function(String)? onChanged,
   }) : _controller = controller,
        _label = label,
        _prefixIcon = prefixIcon,
        _validator = validator,
-       _obscureText = obscureText;
+       _obscureText = obscureText,
+       _onChanged = onChanged;
 
   final TextEditingController? _controller;
   final String? _label;
   final IconData? _prefixIcon;
   final String? Function(String?)? _validator;
   final bool _obscureText;
+  final Function(String)? _onChanged;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: _controller,
+      onChanged: _onChanged,
       validator: _validator,
       obscureText: _obscureText,
       style: context.typography.smallText,
       autovalidateMode: AutovalidateMode.onUnfocus,
       decoration: InputDecoration(
         label: _label != null ? Text(_label) : null,
-        prefixIcon: Icon(_prefixIcon),
+        prefixIcon: Icon(_prefixIcon, size: 20),
+        prefixIconColor: context.palette.inputIconColor,
       ),
     );
   }
