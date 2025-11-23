@@ -4,4 +4,5 @@ abstract class Assets {
   static const String improveShape = 'assets/images/improve_shape.png';
   static const String leanAndTone = 'assets/images/lean_tone.png';
   static const String loseFat = 'assets/images/lose_fat.png';
+  static const String welcome = 'assets/images/welcome.png';
 }

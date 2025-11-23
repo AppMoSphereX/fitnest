@@ -42,7 +42,7 @@ final class ProfileCompletionVMProvider
 }
 
 String _$profileCompletionVMHash() =>
-    r'60ace1c904fda11f8a353b313809e06dce62fda3';
+    r'2079f8176746a87695ae7ff987b3c402c9af604c';
 
 abstract class _$ProfileCompletionVM extends $Notifier<ProfileCompletionState> {
   ProfileCompletionState build();

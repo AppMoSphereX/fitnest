@@ -58,7 +58,8 @@ class UserRepositoryRemote implements UserRepository {
     final result = await _firestoreService.updateUserProfile(user.toDto());
     switch (result) {
       case Ok():
-        _cachedUser = user;
+        _cachedUser = null;
+        await getUserProfile();
         return Result.ok(null);
       case Error():
         return Result.error((result as Error).error);

@@ -52,6 +52,10 @@ class AppLocalization {
     'loseFat': 'Lose Fat',
     'loseFatDescription':
         'I have over 10 kg to lose. I want to drop all this fat and gain muscle mass',
+    'welcome': 'Welcome',
+    'youAreAllSetNow':
+        'You are all set now, let’s reach your goals together with us',
+    'goToHome': 'Go to Home',
   };
 
   static String _get(String label) =>
@@ -66,6 +70,7 @@ class AppLocalization {
   String get dontHaveAccount => _get('dontHaveAccount');
   String get alreadyHaveAccount => _get('alreadyHaveAccount');
   String get haveAccount => _get('haveAccount');
+  String get welcome => _get('welcome');
   String get welcomeBack => _get('welcomeBack');
   String get hetThere => _get('hetThere');
   String get createAnAccount => _get('createAnAccount');
@@ -99,6 +104,8 @@ class AppLocalization {
   String get leanAndToneDescription => _get('leanAndToneDescription');
   String get loseFat => _get('loseFat');
   String get loseFatDescription => _get('loseFatDescription');
+  String get youAreAllSetNow => _get('youAreAllSetNow');
+  String get goToHome => _get('goToHome');
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {

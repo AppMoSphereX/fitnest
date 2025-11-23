@@ -6,6 +6,7 @@ import 'package:fitnest/ui/core/widgets/expanded_button.dart';
 import 'package:fitnest/ui/profile_completion/profile_completion_vm.dart';
 import 'package:fitnest/ui/profile_completion/widgets/basic_profile_completion.dart';
 import 'package:fitnest/ui/profile_completion/widgets/goal_selection.dart';
+import 'package:fitnest/ui/profile_completion/widgets/welcome_step.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -37,11 +38,13 @@ class ProfileCompletionScreen extends ConsumerWidget {
               onGoalChanged: (goal) => viewModel.setGoal(goal),
               initialGoal: state.goal,
             )
-          : _buildStep3(context),
+          : WelcomeStep(name: 'Mohammad'),
       persistentFooterButtons: [
         state.step == 1
             ? _buildNextButton(appLocalization, typography)
-            : _buildConfirmButton(appLocalization, typography, state.isLoading),
+            : state.step == 2
+            ? _buildConfirmButton(appLocalization, typography, state.isLoading)
+            : _buildGoToHomeButton(appLocalization, typography, context),
       ],
       persistentFooterDecoration: BoxDecoration(),
     );
@@ -70,12 +73,14 @@ class ProfileCompletionScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildStep3(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(30.0),
-      child: Center(
-        child: Text('Profile completed. Now you can start your journey.'),
-      ),
+  Widget _buildGoToHomeButton(
+    AppLocalization appLocalization,
+    AppTypography typography,
+    BuildContext context,
+  ) {
+    return ExpandedButton(
+      text: appLocalization.goToHome,
+      onPressed: () => viewModel.goToHome()
     );
   }
 }

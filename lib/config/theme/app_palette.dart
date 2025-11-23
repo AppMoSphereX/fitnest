@@ -11,6 +11,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
   final Color inputLabelColor;
   final Color scaffoldBackgroundColor;
   final Color defaultTextColor;
+  final Color secondaryTextColor;
 
   const AppPalette({
     required this.primaryGradientStart,
@@ -23,6 +24,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
     required this.inputLabelColor,
     required this.scaffoldBackgroundColor,
     required this.defaultTextColor,
+    required this.secondaryTextColor,
   });
 
   static const light = AppPalette(
@@ -36,6 +38,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
     inputLabelColor: Color(0xFFADA4A5),
     scaffoldBackgroundColor: Colors.white,
     defaultTextColor: Color(0xFF1D1617),
+    secondaryTextColor: Color(0xFF7B6F72),
   );
 
   static const dark = AppPalette(
@@ -49,6 +52,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
     inputLabelColor: Color(0xFF888888),
     scaffoldBackgroundColor: Colors.black,
     defaultTextColor: Color(0xFFFFFFFF),
+    secondaryTextColor: Color(0xFF888888),
   );
 
   LinearGradient get primaryGradient =>
@@ -72,6 +76,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
     Color? inputLabelColor,
     Color? scaffoldBackgroundColor,
     Color? defaultTextColor,
+    Color? secondaryTextColor,
   }) {
     return AppPalette(
       primaryGradientStart: primaryGradientStart ?? this.primaryGradientStart,
@@ -86,6 +91,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
       scaffoldBackgroundColor:
           scaffoldBackgroundColor ?? this.scaffoldBackgroundColor,
       defaultTextColor: defaultTextColor ?? this.defaultTextColor,
+      secondaryTextColor: secondaryTextColor ?? this.secondaryTextColor,
     );
   }
 
@@ -129,6 +135,11 @@ class AppPalette extends ThemeExtension<AppPalette> {
       defaultTextColor: Color.lerp(
         defaultTextColor,
         other.defaultTextColor,
+        t,
+      )!,
+      secondaryTextColor: Color.lerp(
+        secondaryTextColor,
+        other.secondaryTextColor,
         t,
       )!,
     );

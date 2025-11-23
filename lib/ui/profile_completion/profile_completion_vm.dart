@@ -1,8 +1,12 @@
 import 'package:fitnest/data/repositories/repositories_providers.dart';
+import 'package:fitnest/domain/models/auth/auth_status.dart';
 import 'package:fitnest/domain/models/user/goal.dart';
 import 'package:fitnest/domain/models/user/user.dart';
 import 'package:fitnest/domain/repositories/auth_repository.dart';
 import 'package:fitnest/domain/repositories/user_repository.dart';
+import 'package:fitnest/routing/auth_session_manager.dart';
+import 'package:fitnest/routing/router.dart';
+import 'package:fitnest/routing/routes.dart';
 import 'package:fitnest/ui/profile_completion/profile_completion_state.dart';
 import 'package:fitnest/utils/result.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -51,6 +55,15 @@ class ProfileCompletionVM extends _$ProfileCompletionVM {
     if (state.step > 1) {
       state = state.copyWith(step: state.step - 1);
     }
+  }
+
+  void goToHome() {
+    state = state.copyWith(isLoading: true);
+    final authState = ref.refresh(authSessionManagerProvider);
+    if (authState.status == AuthStatus.authenticated) {
+      ref.read(routerProvider).go(Routes.home);
+    }
+    state = state.copyWith(isLoading: false);
   }
 
   Future<void> completeProfile() async {

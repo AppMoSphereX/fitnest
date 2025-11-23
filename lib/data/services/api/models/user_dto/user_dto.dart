@@ -46,16 +46,14 @@ class UserDto {
 
   Map<String, dynamic> toFirestore() {
     return {
-      'email': email,
-      'firstName': firstName,
-      'lastName': lastName,
-      'gender': gender,
-      'dateOfBirth': dateOfBirth != null
-          ? Timestamp.fromDate(dateOfBirth!)
-          : null,
-      'weight': weight,
-      'height': height,
-      'goal': goal,
+      if (email != null) 'email': email,
+      if (firstName != null) 'firstName': firstName,
+      if (lastName != null) 'lastName': lastName,
+      if (gender != null) 'gender': gender,
+      if (dateOfBirth != null) 'dateOfBirth': Timestamp.fromDate(dateOfBirth!),
+      if (weight != null) 'weight': weight,
+      if (height != null) 'height': height,
+      if (goal != null) 'goal': goal,
     };
   }
 }
