@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SignupResponse implements DiagnosticableTreeMixin {
 
- String get displayName; String get email; String get refreshToken;
+ String get userId;
 /// Create a copy of SignupResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,21 +26,21 @@ $SignupResponseCopyWith<SignupResponse> get copyWith => _$SignupResponseCopyWith
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'SignupResponse'))
-    ..add(DiagnosticsProperty('displayName', displayName))..add(DiagnosticsProperty('email', email))..add(DiagnosticsProperty('refreshToken', refreshToken));
+    ..add(DiagnosticsProperty('userId', userId));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SignupResponse&&(identical(other.displayName, displayName) || other.displayName == displayName)&&(identical(other.email, email) || other.email == email)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SignupResponse&&(identical(other.userId, userId) || other.userId == userId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,displayName,email,refreshToken);
+int get hashCode => Object.hash(runtimeType,userId);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SignupResponse(displayName: $displayName, email: $email, refreshToken: $refreshToken)';
+  return 'SignupResponse(userId: $userId)';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $SignupResponseCopyWith<$Res>  {
   factory $SignupResponseCopyWith(SignupResponse value, $Res Function(SignupResponse) _then) = _$SignupResponseCopyWithImpl;
 @useResult
 $Res call({
- String displayName, String email, String refreshToken
+ String userId
 });
 
 
@@ -68,11 +68,9 @@ class _$SignupResponseCopyWithImpl<$Res>
 
 /// Create a copy of SignupResponse
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? displayName = null,Object? email = null,Object? refreshToken = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? userId = null,}) {
   return _then(_self.copyWith(
-displayName: null == displayName ? _self.displayName : displayName // ignore: cast_nullable_to_non_nullable
-as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,refreshToken: null == refreshToken ? _self.refreshToken : refreshToken // ignore: cast_nullable_to_non_nullable
+userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -158,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String displayName,  String email,  String refreshToken)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String userId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SignupResponse() when $default != null:
-return $default(_that.displayName,_that.email,_that.refreshToken);case _:
+return $default(_that.userId);case _:
   return orElse();
 
 }
@@ -179,10 +177,10 @@ return $default(_that.displayName,_that.email,_that.refreshToken);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String displayName,  String email,  String refreshToken)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String userId)  $default,) {final _that = this;
 switch (_that) {
 case _SignupResponse():
-return $default(_that.displayName,_that.email,_that.refreshToken);case _:
+return $default(_that.userId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -199,10 +197,10 @@ return $default(_that.displayName,_that.email,_that.refreshToken);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String displayName,  String email,  String refreshToken)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String userId)?  $default,) {final _that = this;
 switch (_that) {
 case _SignupResponse() when $default != null:
-return $default(_that.displayName,_that.email,_that.refreshToken);case _:
+return $default(_that.userId);case _:
   return null;
 
 }
@@ -214,12 +212,10 @@ return $default(_that.displayName,_that.email,_that.refreshToken);case _:
 
 
 class _SignupResponse with DiagnosticableTreeMixin implements SignupResponse {
-   _SignupResponse({required this.displayName, required this.email, required this.refreshToken});
+   _SignupResponse({required this.userId});
   
 
-@override final  String displayName;
-@override final  String email;
-@override final  String refreshToken;
+@override final  String userId;
 
 /// Create a copy of SignupResponse
 /// with the given fields replaced by the non-null parameter values.
@@ -232,21 +228,21 @@ _$SignupResponseCopyWith<_SignupResponse> get copyWith => __$SignupResponseCopyW
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'SignupResponse'))
-    ..add(DiagnosticsProperty('displayName', displayName))..add(DiagnosticsProperty('email', email))..add(DiagnosticsProperty('refreshToken', refreshToken));
+    ..add(DiagnosticsProperty('userId', userId));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SignupResponse&&(identical(other.displayName, displayName) || other.displayName == displayName)&&(identical(other.email, email) || other.email == email)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SignupResponse&&(identical(other.userId, userId) || other.userId == userId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,displayName,email,refreshToken);
+int get hashCode => Object.hash(runtimeType,userId);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'SignupResponse(displayName: $displayName, email: $email, refreshToken: $refreshToken)';
+  return 'SignupResponse(userId: $userId)';
 }
 
 
@@ -257,7 +253,7 @@ abstract mixin class _$SignupResponseCopyWith<$Res> implements $SignupResponseCo
   factory _$SignupResponseCopyWith(_SignupResponse value, $Res Function(_SignupResponse) _then) = __$SignupResponseCopyWithImpl;
 @override @useResult
 $Res call({
- String displayName, String email, String refreshToken
+ String userId
 });
 
 
@@ -274,11 +270,9 @@ class __$SignupResponseCopyWithImpl<$Res>
 
 /// Create a copy of SignupResponse
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? displayName = null,Object? email = null,Object? refreshToken = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? userId = null,}) {
   return _then(_SignupResponse(
-displayName: null == displayName ? _self.displayName : displayName // ignore: cast_nullable_to_non_nullable
-as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,refreshToken: null == refreshToken ? _self.refreshToken : refreshToken // ignore: cast_nullable_to_non_nullable
+userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

@@ -1,10 +1,9 @@
-import 'package:fitnest/data/repositories/auth/auth_repository.dart';
+import 'package:fitnest/domain/repositories/auth_repository.dart';
 import 'package:fitnest/data/services/api/auth_service.dart';
 import 'package:fitnest/data/services/api/models/login_request/login_request.dart';
 import 'package:fitnest/data/services/api/models/login_response/login_response.dart';
 import 'package:fitnest/data/services/api/models/signup_request/signup_request.dart';
 import 'package:fitnest/data/services/api/models/signup_response/signup_response.dart';
-import 'package:fitnest/domain/models/user/user.dart';
 import 'package:fitnest/utils/result.dart';
 import 'package:flutter/foundation.dart';
 
@@ -13,18 +12,18 @@ class AuthRepositoryRemote extends AuthRepository {
     : _authService = authService;
 
   final AuthService _authService;
-
-  late User user;
-
   @override
   bool get isAuthenticated => _authService.isAuthenticated;
+
+  @override
+  String? get currentUserId => _authService.currentUserId;
 
   @override
   Stream<bool?> get authStateChanges =>
       _authService.authStateChanges.map((user) => user != null);
 
   @override
-  Future<Result<void>> signup({
+  Future<Result<String>> signup({
     required String email,
     required String password,
   }) async {
@@ -34,11 +33,7 @@ class AuthRepositoryRemote extends AuthRepository {
       );
       switch (resultSignup) {
         case Ok<SignupResponse>():
-          user = User(
-            email: resultSignup.value.email,
-            displayName: resultSignup.value.displayName,
-          );
-          return Result.ok(null);
+          return Result.ok(resultSignup.value.userId);
         case Error<SignupResponse>():
           debugPrint(resultSignup.error.toString());
           return Result.error(resultSignup.error);
@@ -59,10 +54,6 @@ class AuthRepositoryRemote extends AuthRepository {
       );
       switch (resultLogin) {
         case Ok<LoginResponse>():
-          user = User(
-            email: resultLogin.value.email,
-            displayName: resultLogin.value.displayName,
-          );
           return Result.ok(null);
         case Error<LoginResponse>():
           debugPrint(resultLogin.error.toString());

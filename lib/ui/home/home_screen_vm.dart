@@ -1,4 +1,4 @@
-import 'package:fitnest/data/repositories/auth/auth_repository.dart';
+import 'package:fitnest/domain/repositories/auth_repository.dart';
 import 'package:fitnest/data/repositories/repositories_providers.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
